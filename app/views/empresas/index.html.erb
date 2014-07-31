@@ -1,0 +1,41 @@
+<h1>Administrador de Sucursales</h1>
+<% if @empresas != null %>
+<% { %>
+	<h2>Sucursales existentes</h2>
+	<table style="width:300px">
+	<tr>
+	  <td>Nombre</td>
+	  <td>Calle</td> 
+	  <td>Numero ext</td>
+	  <td>Numero int</td>
+	  <td>Codigo Posta</td>
+	  <td>Ciudad</td>
+	  <td>Pais</td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	
+	
+	<% @empresas.each do |empresa| %>
+	<tr>
+	  <td><%= empresa.nombre %></td>
+	  <td><%= empresa.calle %></td> 
+	  <td><%= empresa.numero_ext %></td>
+	  <td><%= empresa.numero_int %></td>
+	  <td><%= empresa.codigo_postal %></td>
+	  <td><%= empresa.ciudad %></td>
+	  <td><%= empresa.pais %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', empresa, method: :delete,
+                                     data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+	<% end %>
+	</table>
+<% }else{ %>
+	
+	<h2>No hay empresas a mostrar</h2>
+
+<% } %>
+
+<%= link_to 'Empleado nuevo', new_user_path %>

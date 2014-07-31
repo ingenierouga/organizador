@@ -1,4 +1,30 @@
 Organizador::Application.routes.draw do
+#  get "empleados/index"
+#  get "empleados/show"
+#  get "empleados/new"
+#  get "empleados/create"
+#  get "empleados/edit"
+#  get "empleados/update"
+#  get "empleados/destroy"
+#  get "empresas/index"
+#  get "empresas/show"
+#  get "empresas/new"
+#  get "empresas/create"
+#  get "empresas/edit"
+#  get "empresas/update"
+#  get "empresas/destroy"
+
+#  get "empresa/index"
+#  get "empresa/show"
+#  get "empresa/new"
+#  get "empresa/create"
+#  get "empresa/edit"
+#  get "empresa/update"
+#  get "empresa/destroy"
+ resources :empresas
+ resources :empleados
+
+#root :to => "empresas#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
