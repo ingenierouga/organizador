@@ -20,4 +20,8 @@ class EmpleadosController < ApplicationController
 
   def destroy
   end
+  
+  def sign_in
+    
+  end
 end
