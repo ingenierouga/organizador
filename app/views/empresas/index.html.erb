@@ -1,6 +1,5 @@
 <h1>Administrador de Sucursales</h1>
-<% if @empresas != null %>
-<% { %>
+<% if @empresas != nil %>
 	<h2>Sucursales existentes</h2>
 	<table style="width:300px">
 	<tr>
@@ -17,7 +16,7 @@
 	</tr>
 	
 	
-	<% @empresas.each do |empresa| %>
+	<%@empresas.each do |empresa| %>
 	<tr>
 	  <td><%= empresa.nombre %></td>
 	  <td><%= empresa.calle %></td> 
@@ -26,16 +25,20 @@
 	  <td><%= empresa.codigo_postal %></td>
 	  <td><%= empresa.ciudad %></td>
 	  <td><%= empresa.pais %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Destroy', empresa, method: :delete,
-                                     data: { confirm: 'Are you sure?' } %></td>
+      
+	  
+      <td><%= link_to 'Modificar', edit_empresa_path(empresa) %></td>
+      <td><%= link_to 'Eliminar', empresa, method: :delete,
+                                     data: { confirm: 'Estas seguro?' } %></td>
 	</tr>
 	<% end %>
 	</table>
-<% }else{ %>
+<% else %>
 	
 	<h2>No hay empresas a mostrar</h2>
 
-<% } %>
+<% end %>
+<br>
+<%= link_to "Agregar empresa", new_empresa_path %>
 
-<%= link_to 'Empleado nuevo', new_user_path %>
+
