@@ -17,6 +17,7 @@ class EmpresasController < ApplicationController
 
   def new
     @empresa = Empresa.new
+    @Empleados = Empleado.new
   end
 
   def create
@@ -57,7 +58,7 @@ class EmpresasController < ApplicationController
     @empresa.codigo_postal = params[:codigo_postal]
     @empresa.ciudad = params[:ciudad]
     @empresa.pais = params[:pais]
-    @empresa.save!
+    @empresa.update!
     redirect_to empresas_path, :notice => "Tu sucursal ha sido actualizada"
     
   #  if @empresa.update_attributes(params[:empresa]) 

@@ -1,12 +1,11 @@
 <script type="text/javascript">
-<!--
-// Form validation code will come here.
+
 function validate()
 {
  
    if( document.input.nombre.value == "" )
    {
-   	 document.getElementById("Error").innerHTML+="<li>Error: Nombre es necesario para crear unas nueva sucursal</li>";
+   	 document.getElementById("Error").innerHTML="<li>Error: Nombre es necesario para crear unas nueva sucursal</li>";
    	 //document.getElementById("Error").style.border = "solid 1px red";
      //alert( "Nombre es necesario para crear unas nueva sucursal!" );
      document.input.nombre.focus() ;
@@ -19,7 +18,7 @@ function validate()
    if( document.input.numero_int.value != "" &&
            isNaN( document.input.numero_int.value ) )
    {
-   	document.getElementById("Error").innerHTML+="<li>Error: Numero Interior debe ser un numero</li>";
+   	document.getElementById("Error").innerHTML="<li>Error: Numero Interior debe ser un numero</li>";
    	 
      //alert( "Numero Interior debe ser un numero" );
      document.input.numero_int.focus() ;
@@ -29,7 +28,7 @@ function validate()
    if( document.input.numero_ext.value != "" &&
            isNaN( document.input.numero_ext.value ) )
    {
-   	document.getElementById("Error").innerHTML+="<li>Error: Numero Exterior debe ser un numero</li>";
+   	document.getElementById("Error").innerHTML="<li>Error: Numero Exterior debe ser un numero</li>";
      //alert( "Numero Exterior debe ser un numero" );
      document.input.numero_ext.focus() ;
      return false;
@@ -39,7 +38,7 @@ function validate()
            isNaN( document.input.codigo_postal.value ) ||
            document.input.codigo_postal.value.length != 5 ))
    {
-   	 document.getElementById("Error").innerHTML+="<li>Error: Codigo postal debe ser 5 numeros #####.</li>";
+   	 document.getElementById("Error").innerHTML="<li>Error: Codigo postal debe ser 5 numeros #####.</li>";
      //alert( "Codigo postal debe ser 5 numeros #####." );
      document.input.codigo_postal.focus() ;
      return false;
@@ -47,11 +46,10 @@ function validate()
    
    return( true );
 }
-//-->
 </script>
 
 <h1>Editar Sucursal</h1>
-<form name="input" action="/empresas/update" method="get">
+<form name="input" action="/empresas/create" method="get" onsubmit="return(validate());">
 <table>
 	<input type="hidden" name="id" value="<%=@empresa.id%>">
 		<tr> 

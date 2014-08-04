@@ -6,12 +6,14 @@ function validate()
  
    if( document.input.nombre.value == "" )
    {
-     alert( "Nombre del empleado es necesario para crear un nuevo empleado!" );
+   	 document.getElementById("Error").innerHTML+="<li>Error: Nombre del empleado es necesario para crear un nuevo empleado</li>";
+     //alert( "Nombre del empleado es necesario para crear un nuevo empleado" );
      document.input.nombre.focus() ;
      return false;
    }
    if( document.input.correo_electronico.value == "" )
    {
+   	 document.getElementById("Error").innerHTML+="<li>Error: Correo Electronico es necesario para crear un nuevo empleado</li>";
      alert( "Correo Electronico es necesario para crear un nuevo empleado" );
      document.input.correo_electronico.focus() ;
      return false;
@@ -76,7 +78,16 @@ function validate()
  
         <tr>
  			<td>Empresa: </td> 
- 			<td><input type="text" name="empresa_id" ></td> 
+ 			<td><select name="empresa_id">
+			    <option hidden="true">Seleccione una empresa</option>
+			    <%@empresas.each do |empresa| %>
+	
+
+			    	<option  > <%= empresa.nombre %> </option>
+			    <% end %>
+			</select>
+			</td>
+ 		<!--	<td><input type="text" name="empresa_id" ></td> --> 
  		<tr>
 
 		<tr>
