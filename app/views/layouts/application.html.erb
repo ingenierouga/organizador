@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Organizador</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <title>Organizador de Empresas</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
+  <style>
+	table, th, td
+	{
+	border-collapse:collapse;
+	border:1px solid black;
+	}
+	th, td
+	{
+	padding:5px;
+	}
+  </style>
 </head>
 <body>
-
+ 
+<% flash.each do |key, value| %>
+<p> <%= value %> </p>
+<% end %>
+ 
 <%= yield %>
-
+ 
 </body>
 </html>

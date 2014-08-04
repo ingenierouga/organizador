@@ -1,13 +1,100 @@
+<script type="text/javascript">
+<!--
+// Form validation code will come here.
+function validate()
+{
+ 
+   if( document.input.nombre.value == "" )
+   {
+   	 document.getElementById("Error").innerHTML+="<li>Error: Nombre es necesario para crear unas nueva sucursal</li>";
+   	 //document.getElementById("Error").style.border = "solid 1px red";
+     //alert( "Nombre es necesario para crear unas nueva sucursal!" );
+     document.input.nombre.focus() ;
+     document.input.nombre.style.border = "solid 1px red";
+     return false;
+   }
+   
+   
+   
+   if( document.input.numero_int.value != "" &&
+           isNaN( document.input.numero_int.value ) )
+   {
+   	document.getElementById("Error").innerHTML+="<li>Error: Numero Interior debe ser un numero</li>";
+   	 
+     //alert( "Numero Interior debe ser un numero" );
+     document.input.numero_int.focus() ;
+     return false;
+   }
+   
+   if( document.input.numero_ext.value != "" &&
+           isNaN( document.input.numero_ext.value ) )
+   {
+   	document.getElementById("Error").innerHTML+="<li>Error: Numero Exterior debe ser un numero</li>";
+     //alert( "Numero Exterior debe ser un numero" );
+     document.input.numero_ext.focus() ;
+     return false;
+   }
+   
+   if( document.input.codigo_postal.value != "" &&(
+           isNaN( document.input.codigo_postal.value ) ||
+           document.input.codigo_postal.value.length != 5 ))
+   {
+   	 document.getElementById("Error").innerHTML+="<li>Error: Codigo postal debe ser 5 numeros #####.</li>";
+     //alert( "Codigo postal debe ser 5 numeros #####." );
+     document.input.codigo_postal.focus() ;
+     return false;
+   }
+   
+   return( true );
+}
+//-->
+</script>
 <h1>Nueva Sucursal</h1>
-<form name="input" action="" method="get">
-Nombre: <input type="text" name="nombre"><br>
-Calle: <input type="text" name="calle"><br>
-Colonia: <input type="text" name="colonia"><br>
-Numero Exterior: <input type="text" name="numero_ext"><br>
-Numero Interior: <input type="text" name="numero_int"><br>
-Codigo Postal: <input type="text" name="codigo_postal"><br>
-Ciudad: <input type="text" name="ciudad"><br>
-Pais: <input type="text" name="pais"><br>
 
+<div id="Error"></div>
+
+<form name="input" action="/empresas/create" method="get" onsubmit="return(validate());">
+	<form accept-charset="UTF-8" action="/home/index" method="post">
+	<table>
+		<tr> 
+			<td>Nombre:</td> 
+			<td><input type="text" name="nombre"> </td> 
+		<tr>
+ 		<tr>
+ 			<td>Calle: </td> 
+ 			<td><input type="text" name="calle"></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>Colonia:</td> 
+ 			<td><input type="text" name="colonia"></td> 
+ 		<tr>
+ 
+        <tr>
+ 			<td>Numero Exterior: </td> 
+ 			<td><input type="text" name="numero_ext"></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>Numero Interior: </td> 
+ 			<td><input type="text" name="numero_int"></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>Codigo Postal:</td> 
+ 			<td> <input type="text" name="codigo_postal"></td> 
+ 		<tr>
+
+		<tr>
+			<td>Ciudad:</td> 
+			<td> <input type="text" name="ciudad"></td> 
+		<tr>
+
+		<tr>
+			<td>Pais:</td> 
+			<td><input type="text" name="pais"></td> 
+		<tr>
+
+</table>
 <input type="submit" value="Submit">
 </form>

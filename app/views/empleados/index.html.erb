@@ -1,2 +1,38 @@
-<h1>Empleados#index</h1>
-<p>Find me in app/views/empleados/index.html.erb</p>
+<h1>Listado de Empleado</h1>
+<% if @empleados != nil %>
+	<h2>Empleados Existentes</h2>
+	<table style="width:300px">
+	<tr>
+	  <td>Nombre</td>
+	  <td>Correo Electronico</td> 
+	  <td>RFC</td>
+	  <td>Empresa id</td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	
+	
+	<%@empleados.each do |empleado| %>
+	<tr>
+	  <td><%= empleado.nombre %></td>
+	  <td><%= empleado.correo_electronico %></td> 
+	  <td><%= empleado.rfc %></td>
+	  <td><%= empleado.empresa_id %></td>
+	  
+      
+	  
+      <td><%= link_to 'Modificar', edit_empleado_path(empresa) %></td>
+      <td><%= link_to 'Eliminar', empleado, method: :delete,
+                                     data: { confirm: 'Estas seguro?' } %></td>
+	</tr>
+	<% end %>
+	</table>
+<% else %>
+	
+	<h2>No hay empleado a mostrar</h2>
+
+<% end %>
+<br>
+<%= link_to "Agregar empresa", new_empleado_path %>
+

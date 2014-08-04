@@ -1,41 +1,45 @@
-<h1>Administrador de Sucursales</h1>
-<% if @empresas != null %>
-<% { %>
-	<h2>Sucursales existentes</h2>
-	<table style="width:300px">
-	<tr>
-	  <td>Nombre</td>
-	  <td>Calle</td> 
-	  <td>Numero ext</td>
-	  <td>Numero int</td>
-	  <td>Codigo Posta</td>
-	  <td>Ciudad</td>
-	  <td>Pais</td>
-	  <td></td>
-	  <td></td>
-	  <td></td>
-	</tr>
-	
-	
-	<% @empresas.each do |empresa| %>
-	<tr>
-	  <td><%= empresa.nombre %></td>
-	  <td><%= empresa.calle %></td> 
-	  <td><%= empresa.numero_ext %></td>
-	  <td><%= empresa.numero_int %></td>
-	  <td><%= empresa.codigo_postal %></td>
-	  <td><%= empresa.ciudad %></td>
-	  <td><%= empresa.pais %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Destroy', empresa, method: :delete,
-                                     data: { confirm: 'Are you sure?' } %></td>
-	</tr>
-	<% end %>
-	</table>
-<% }else{ %>
-	
-	<h2>No hay empresas a mostrar</h2>
+<h1>Show Sucursal</h1>
+<form>
+<table>
+		<tr> 
+			<td>Nombre:</td> 
+			<td><input type="text" name="nombre" value=<%=@empresa.nombre%> </td> 
+		<tr>
+ 		<tr>
+ 			<td>Calle: </td> 
+ 			<td><input type="text" name="calle" value=<%=@empresa.calle%>></td> 
+ 		<tr>
 
-<% } %>
+		<tr>
+ 			<td>Colonia:</td> 
+ 			<td><input type="text" name="colonia" value=<%=@empresa.colonia%>></td> 
+ 		<tr>
+ 
+        <tr>
+ 			<td>Numero Exterior: </td> 
+ 			<td><input type="text" name="numero_ext" value=<%=@empresa.numero_ext%>></td> 
+ 		<tr>
 
-<%= link_to 'Empleado nuevo', new_user_path %>
+		<tr>
+ 			<td>Numero Interior: </td> 
+ 			<td><input type="text" name="numero_int" value=<%=@empresa.numero_int%>></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>Codigo Postal:</td> 
+ 			<td> <input type="text" name="codigo_postal" value=<%=@empresa.codigo_postal%>></td> 
+ 		<tr>
+
+		<tr>
+			<td>Ciudad:</td> 
+			<td> <input type="text" name="ciudad" value=<%=@empresa.ciudad%>></td> 
+		<tr>
+
+		<tr>
+			<td>Pais:</td> 
+			<td><input type="text" name="pais" value=<%=@empresa.pais%>></td> 
+		<tr>
+
+</table>
+<input type="submit" value="Submit">
+</form>

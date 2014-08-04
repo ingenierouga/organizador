@@ -1,2 +1,36 @@
-<h1>Empleados#edit</h1>
-<p>Find me in app/views/empleados/edit.html.erb</p>
+<h1>Editar Empleado</h1>
+<form name="input" action="/empresas/update" method="get">
+<table>
+		<tr> 
+			<td>Nombre:</td> 
+			<td><input type="text" name="nombre" value=<%=@empleado.nombre%> </td> 
+		<tr>
+ 		<tr>
+ 			<td>Correo Electronico: </td> 
+ 			<td><input type="text" name="correo_electronico" value=<%=@empleado.correo_electronico%>></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>RFC:</td> 
+ 			<td><input type="text" name="rfc" value=<%=@empleado.rfc%>></td> 
+ 		<tr>
+ 
+        <tr>
+ 			<td>Empresa: </td> 
+ 			<td><input type="text" name="empresa_id" value=<%=@empleado.empresa_id%>></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>Password: </td> 
+ 			<td><input type="text" name="password" value=<%=@empleado.password%>></td> 
+ 		<tr>
+
+		<tr>
+ 			<td>Confirmacion Password:</td> 
+ 			<td> <input type="text" name="confirmacion_password" value=<%=@empleado.password%>></td> 
+ 		<tr>
+
+
+</table>
+<input type="submit" value="Submit">
+</form>

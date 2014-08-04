@@ -9,9 +9,9 @@ Organizador::Application.routes.draw do
 #  get "empresas/index"
 #  get "empresas/show"
 #  get "empresas/new"
-#  get "empresas/create"
+  get "empresas/create"
 #  get "empresas/edit"
-#  get "empresas/update"
+  get "empresas/update"
 #  get "empresas/destroy"
 
 #  get "empresa/index"
