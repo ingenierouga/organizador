@@ -1,66 +1,111 @@
 <script type="text/javascript">
 <!--
-// Form validation code will come here.
-function validate()
+
+function validateEmpleado()
 {
  
    if( document.input.nombre.value == "" )
    {
-   	 document.getElementById("Error").innerHTML+="<li>Error: Nombre del empleado es necesario para crear un nuevo empleado</li>";
+   	 document.getElementById("Error").innerHTML="<li>Error: Nombre del empleado es necesario para crear un nuevo empleado</li>";
      //alert( "Nombre del empleado es necesario para crear un nuevo empleado" );
      document.input.nombre.focus() ;
+     document.input.nombre.style.border = "solid 1px red";
      return false;
+   }else
+   {
+   	document.input.nombre.style.border = "solid 1px black";
    }
+   
    if( document.input.correo_electronico.value == "" )
    {
-   	 document.getElementById("Error").innerHTML+="<li>Error: Correo Electronico es necesario para crear un nuevo empleado</li>";
-     alert( "Correo Electronico es necesario para crear un nuevo empleado" );
+   	 document.getElementById("Error").innerHTML="<li>Error: Correo Electronico es necesario para crear un nuevo empleado</li>";
+     //alert( "Correo Electronico es necesario para crear un nuevo empleado" );
+     document.input.correo_electronico.style.border = "solid 1px red";
      document.input.correo_electronico.focus() ;
      return false;
-   }
-   if( document.input.rfc.value == "" )
+   }else
    {
-     alert( "RFC es necesario para crear un nuevo empleado" );
-     document.input.rfc.focus() ;
-     return false;
-   }if( document.input.empresa_id.value == "" )
-   {
-     alert( "Empresa es necesaria para crear un nuevo empleado" );
-     document.input.empresa_id.focus() ;
-     return false;
+   	document.input.correo_electronico.style.border = "solid 1px black";
    }
-   if( document.input.password.value == "" )
-   {
-     alert( "Password es necesario para crear un nuevo empleado" );
-     document.input.password.focus() ;
-     return false;
-   }
-   
-   if( document.input.password.value != document.confirmacion_password.value )
-   {
-     alert( "Tu Password y su Confirmacion no concuerdan" );
-     document.input.password.focus() ;
-     return false;
-   }
-   
+      
    var emailID = document.input.correo_electronico.value;
    atpos = emailID.indexOf("@");
    dotpos = emailID.lastIndexOf(".");
    if (atpos < 1 || ( dotpos - atpos < 2 )) 
    {
-       alert("Por favor escriba un Correo Electronico valido")
+       //alert("Por favor escriba un Correo Electronico valido")
+       document.getElementById("Error").innerHTML="<li>Por favor escriba un Correo Electronico valido</li>";
+       document.input.correo_electronico.style.border = "solid 1px red";
        document.input.correo_electronico.focus() ;
        return false;
+   }else
+   {
+   	document.input.correo_electronico.style.border = "solid 1px black";
    }
+   
+   if( document.input.rfc.value == "" )
+   {
+     //alert( "RFC es necesario para crear un nuevo empleado" );
+     document.getElementById("Error").innerHTML="<li>RFC es necesario para crear un nuevo empleado</li>";
+     document.input.rfc.style.border = "solid 1px red";
+     document.input.rfc.focus() ;
+     return false;
+   }else
+   {
+   	document.input.rfc.style.border = "solid 1px black";
+   }
+   
+   if( document.input.empresa_id.value == "" )
+   {
+     //alert( "Empresa es necesaria para crear un nuevo empleado" );
+     document.getElementById("Error").innerHTML="<li>Empresa es necesaria para crear un nuevo empleado</li>";
+     document.input.empresa_id.style.border = "solid 1px red";
+     document.input.empresa_id.focus() ;
+     return false;
+   }else
+   {
+   	document.input.empresa_id.style.border = "solid 1px black";
+   }
+   
+   if( document.input.password.value == "" )
+   {
+     //alert( "Password es necesario para crear un nuevo empleado" );
+     document.getElementById("Error").innerHTML="<li>Password es necesario para crear un nuevo empleado</li>";
+     document.input.password.style.border = "solid 1px red";
+     document.input.password.focus() ;
+     return false;
+   }else
+   {
+   	document.input.password.style.border = "solid 1px black";
+   }
+   
+   if( document.input.password.value != document.confirmacion_password.value )
+   {
+     //alert( "Tu Password y su Confirmacion no concuerdan" );
+     document.getElementById("Error").innerHTML="<li>Tu Password y su Confirmacion no concuerdan</li>";
+     document.input.password.style.border = "solid 1px red";
+     document.input.confirmacion_password.style.border = "solid 1px red";
+     document.input.password.focus() ;
+     return false;
+   }else
+   {
+   	document.input.password.style.border = "solid 1px black";
+   	document.input.confirmacion_password.style.border = "solid 1px black";
+   }
+   
+
    
    
    
    return( true );
 }
-//-->
+
 </script>
 <h1>Nuevo Empleado</h1>
-<form>
+
+<div id="Error"></div>
+
+<form name="input" action="/empleados/create" method="get" onsubmit="return(validateEmpleado());">
 <table>
 		<tr> 
 			<td>Nombre:</td> 

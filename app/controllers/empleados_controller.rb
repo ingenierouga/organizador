@@ -46,12 +46,7 @@ class EmpleadosController < ApplicationController
     
     @empresa.save!
     redirect_to empleados_path, :notice => "El Empleado ha sido actualizada"
-    
-  #  if @empresa.update_attributes(params[:empresa]) 
-  #    redirect_to posts_path, :notice => "Tu post se ha actualizado"
-  #  else
-  #    render "edit"
-  #  end
+
   end
 
   def destroy

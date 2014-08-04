@@ -49,6 +49,7 @@ function validate()
 </script>
 
 <h1>Editar Sucursal</h1>
+<div id="Error"></div>
 <form name="input" action="/empresas/create" method="get" onsubmit="return(validate());">
 <table>
 	<input type="hidden" name="id" value="<%=@empresa.id%>">

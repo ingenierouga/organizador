@@ -27,7 +27,7 @@ class EmpresasController < ApplicationController
  #   puts params[:nombre]
  #   puts "hola"
     @empresa.calle = params[:calle]
-    @empresa.colonia = params[:colonia]
+    @empresa.colonia = params[:pais2]
     @empresa.numero_ext = params[:numero_ext]
     @empresa.numero_int = params[:numero_int]
     @empresa.codigo_postal = params[:codigo_postal]
@@ -52,7 +52,7 @@ class EmpresasController < ApplicationController
     @empresa = Empresa.find(params[:id])
     @empresa.nombre = params[:nombre]
     @empresa.calle = params[:calle]
-    @empresa.colonia = params[:colonia]
+    @empresa.colonia = "colonia prueba"
     @empresa.numero_ext = params[:numero_ext]
     @empresa.numero_int = params[:numero_int]
     @empresa.codigo_postal = params[:codigo_postal]
