@@ -23,6 +23,7 @@ Organizador::Application.routes.draw do
 #  get "empresa/destroy"
  resources :empresas
  resources :empleados
+ resources :sessions, only: [:new, :create, :destroy]
 
 #root :to => "empresas#index"
   # The priority is based upon order of creation: first created -> highest priority.

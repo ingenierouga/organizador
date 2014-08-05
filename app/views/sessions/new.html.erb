@@ -1,0 +1,60 @@
+<script type="text/javascript">
+
+
+
+function validate()
+{
+	alert( "Entro a la validacion" );
+	
+	if( document.getElementById("session_email").value == "" )
+	   {
+	   	 document.getElementById("Error").innerHTML="<li>Error: Correo Electronico es necesario para crear un nuevo empleado</li>";
+	     document.getElementById("session_email").style.border = "solid 1px red";
+	     document.getElementById("session_email").focus() ;
+	     return false;
+	   }else
+	   {
+	   	document.getElementById("session_email").style.border = "solid 1px black";
+	   }
+	      
+	   alert( "Entro a la validacion" );   
+	      
+	   var emailID = document.getElementById("session_email").value;
+	   alert( emailID );
+	
+	   atpos = emailID.indexOf("@");
+	   dotpos = emailID.lastIndexOf(".");
+	   if (atpos < 1 || ( dotpos - atpos < 2 )) 
+	   {
+	       //alert("Por favor escriba un Correo Electronico valido")
+	       document.getElementById("Error").innerHTML="<li>Por favor escriba un Correo Electronico valido</li>";
+	       document.getElementById("session_email").style.border = "solid 1px red";
+	       document.getElementById("session_email").focus() ;
+	       return false;
+	   }else
+	   {
+	   	document.input.session_email.style.border = "solid 1px black";
+	   }
+}
+</script>
+
+<% provide(:title, "Sign in") %>
+<h1>Sign in</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:session, url: sessions_path, :html=>{:name=>"f",:onsubmit=>"return validate();"}) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <p>Nuevo usuario? <%= link_to "Crear nuevo Usuario/Empleado!", new_empleado_path %></p>
+
+  </div>
+</div>

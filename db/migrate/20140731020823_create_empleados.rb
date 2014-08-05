@@ -8,6 +8,7 @@ class CreateEmpleados < ActiveRecord::Migration
       t.string :password
       t.integer :empresa_id
       t.string :password_digest
+      t.string :remember_token
 
       t.timestamps
     end
