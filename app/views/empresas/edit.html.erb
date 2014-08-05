@@ -1,6 +1,6 @@
 <script type="text/javascript">
 
-function validate()
+function validateEmpresa()
 {
  
    if( document.input.nombre.value == "" )
@@ -11,6 +11,9 @@ function validate()
      document.input.nombre.focus() ;
      document.input.nombre.style.border = "solid 1px red";
      return false;
+   }else
+   {
+   	document.input.nombre.style.border = "solid 1px black";
    }
    
    
@@ -22,7 +25,12 @@ function validate()
    	 
      //alert( "Numero Interior debe ser un numero" );
      document.input.numero_int.focus() ;
+     document.input.numero_int.style.border = "solid 1px red";
      return false;
+   }
+   else
+   {
+   	document.input.numero_int.style.border = "solid 1px black";
    }
    
    if( document.input.numero_ext.value != "" &&
@@ -30,8 +38,13 @@ function validate()
    {
    	document.getElementById("Error").innerHTML="<li>Error: Numero Exterior debe ser un numero</li>";
      //alert( "Numero Exterior debe ser un numero" );
+     document.input.numero_ext.style.border = "solid 1px red";
      document.input.numero_ext.focus() ;
      return false;
+   }
+   else
+   {
+   	document.input.numero_ext.style.border = "solid 1px black";
    }
    
    if( document.input.codigo_postal.value != "" &&(
@@ -43,14 +56,19 @@ function validate()
      document.input.codigo_postal.focus() ;
      return false;
    }
+   else
+   {
+   	document.input.codigo_postal.style.border = "solid 1px black";
+   }
    
    return( true );
 }
+
 </script>
 
 <h1>Editar Sucursal</h1>
 <div id="Error"></div>
-<form name="input" action="/empresas/create" method="get" onsubmit="return(validate());">
+<form name="input" action="/empresas/create" method="get" onsubmit="return(validateEmpresa());">
 <table>
 	<input type="hidden" name="id" value="<%=@empresa.id%>">
 		<tr> 
@@ -95,3 +113,43 @@ function validate()
 </table>
 <input type="submit" value="Submit">
 </form>
+
+<h2>Listado de Empleado de Sucursal</h2>
+<% if @empleados != nil %>
+	
+	<table style="width:80%">
+	<tr>
+	  <th>Nombre</th>
+	  <th>Correo Electronico</th> 
+	  <th>RFC</th>
+	  <th>Empresa id</th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	</tr>
+	
+	
+	<%@empleados.each do |empleado| %>
+	<tr>
+	  <td><%= empleado.nombre %></td>
+	  <td><%= empleado.correo_electronico %></td> 
+	  <td><%= empleado.rfc %></td>
+	  <td><%= empleado.empresa_id %></td>
+	  
+      
+	  
+      <td><%= link_to 'Modificar', edit_empleado_path(empleado) %></td>
+      <td><%= link_to 'Eliminar', empleado, method: :delete,
+                                     data: { confirm: 'Estas seguro?' } %></td>
+	</tr>
+	<% end %>
+	</table>
+<% else %>
+	
+	<h2>No hay empleados a mostrar</h2>
+
+<% end %>
+<br>
+
+<%= link_to "Agregar Empleado", controller: 'empleados', action: 'new' %>
+

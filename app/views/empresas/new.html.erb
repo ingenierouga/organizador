@@ -13,7 +13,7 @@ function validateEmpresa()
      return false;
    }else
    {
-   	document.input.nombre.style.border = "solid 0px black";
+   	document.input.nombre.style.border = "solid 1px black";
    }
    
    
@@ -28,6 +28,10 @@ function validateEmpresa()
      document.input.numero_int.style.border = "solid 1px red";
      return false;
    }
+   else
+   {
+   	document.input.numero_int.style.border = "solid 1px black";
+   }
    
    if( document.input.numero_ext.value != "" &&
            isNaN( document.input.numero_ext.value ) )
@@ -38,6 +42,10 @@ function validateEmpresa()
      document.input.numero_ext.focus() ;
      return false;
    }
+   else
+   {
+   	document.input.numero_ext.style.border = "solid 1px black";
+   }
    
    if( document.input.codigo_postal.value != "" &&(
            isNaN( document.input.codigo_postal.value ) ||
@@ -47,6 +55,10 @@ function validateEmpresa()
      //alert( "Codigo postal debe ser 5 numeros #####." );
      document.input.codigo_postal.focus() ;
      return false;
+   }
+   else
+   {
+   	document.input.codigo_postal.style.border = "solid 1px black";
    }
    
    return( true );
@@ -113,9 +125,9 @@ function validateEmpleado()
 </script>
 <h1>Nueva Sucursal</h1>
 
-<div id="Error"></div>
+<div id="Error"><%= %></div>
 
-<form name="input" action="/empresas/create" method="get" onsubmit="return(validate());">
+<form name="input" action="/empresas/create" method="get" onsubmit="return(validateEmpresa());">
 
 	<table>
 		<tr> 

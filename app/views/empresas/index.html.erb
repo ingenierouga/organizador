@@ -3,15 +3,15 @@
 	<h2>Sucursales existentes</h2>
 	<table border="1" style="width:900px">
 	<tr>
-	  <td>Nombre</td>
-	  <td>Calle</td> 
-	  <td>Numero ext</td>
-	  <td>Numero int</td>
-	  <td>Codigo Postal/td>
-	  <td>Ciudad</td>
-	  <td>Pais</td>
-	  <td></td>
-	  <td></td>
+	  <th>Nombre</th>
+	  <th>Calle</th> 
+	  <th>Numero ext</th>
+	  <th>Numero int</th>
+	  <th>Codigo Postal</th>
+	  <th>Ciudad</th>
+	  <th>Pais</th>
+	  <th></th>
+	  <th></th>
 	  
 	</tr>
 	
@@ -20,11 +20,11 @@
 	<tr>
 	  <td><%= empresa.nombre %></td>
 	  <td><%= empresa.calle %></td> 
-	  <td><%= empresa.numero_ext %></td>
-	  <td><%= empresa.numero_int %></td>
-	  <td><%= empresa.codigo_postal %></td>
-	  <td><%= empresa.ciudad %></td>
-	  <td><%= empresa.pais %></td>
+	  <td><%= empresa.numero_ext %> </td>
+	  <td><%= empresa.numero_int %> </td>
+	  <td><%= empresa.codigo_postal %> </td>
+	  <td><%= empresa.ciudad %> </td>
+	  <td><%= empresa.pais %> </td>
       
 	  
       <td><%= link_to 'Modificar', edit_empresa_path(empresa) %></td>

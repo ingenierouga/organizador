@@ -4,7 +4,12 @@
   <title>Organizador de Empresas</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "extra" %>
   <%= csrf_meta_tags %>
+  
+  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
   
   <style>
 	table, th, td
@@ -18,13 +23,21 @@
 	}
   </style>
 </head>
-<body>
+<body >
  
 <% flash.each do |key, value| %>
-<p> <%= value %> </p>
+<p class="error_explanation"> <%= value %> </p>
 <% end %>
- 
+
+
+<div class="contenedor"> 
 <%= yield %>
- 
+</div >
+  <%= debug(params) if Rails.env.development? %>
+  
+  <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
+  
+  
 </body>
+
 </html>

@@ -55,7 +55,7 @@ function validateEmpleado()
    	document.input.rfc.style.border = "solid 1px black";
    }
    
-   if( document.input.empresa_id.value == "" )
+   if( document.input.empresa_id.value == "0" )
    {
      //alert( "Empresa es necesaria para crear un nuevo empleado" );
      document.getElementById("Error").innerHTML="<li>Empresa es necesaria para crear un nuevo empleado</li>";
@@ -79,18 +79,30 @@ function validateEmpleado()
    	document.input.password.style.border = "solid 1px black";
    }
    
-   if( document.input.password.value != document.confirmacion_password.value )
+   if( document.input.confirmation_password.value == "" )
+   {
+     //alert( "Password es necesario para crear un nuevo empleado" );
+     document.getElementById("Error").innerHTML="<li>Password es necesario para crear un nuevo empleado</li>";
+     document.input.confirmation_password.style.border = "solid 1px red";
+     document.input.confirmation_password.focus() ;
+     return false;
+   }else
+   {
+   	document.input.confirmation_password.style.border = "solid 1px black";
+   }
+   
+   if( document.input.password.value != document.input.confirmation_password.value )
    {
      //alert( "Tu Password y su Confirmacion no concuerdan" );
      document.getElementById("Error").innerHTML="<li>Tu Password y su Confirmacion no concuerdan</li>";
      document.input.password.style.border = "solid 1px red";
-     document.input.confirmacion_password.style.border = "solid 1px red";
+     document.input.confirmation_password.style.border = "solid 1px red";
      document.input.password.focus() ;
      return false;
    }else
    {
    	document.input.password.style.border = "solid 1px black";
-   	document.input.confirmacion_password.style.border = "solid 1px black";
+   	document.input.confirmation_password.style.border = "solid 1px black";
    }
    
 
@@ -124,11 +136,11 @@ function validateEmpleado()
         <tr>
  			<td>Empresa: </td> 
  			<td><select name="empresa_id">
-			    <option hidden="true">Seleccione una empresa</option>
+			    <option hidden="true" value='0'>Seleccione una empresa</option>
 			    <%@empresas.each do |empresa| %>
 	
 
-			    	<option  > <%= empresa.nombre %> </option>
+			    	<option value=<%= empresa.id %> > <%= empresa.nombre %> </option>
 			    <% end %>
 			</select>
 			</td>
@@ -137,13 +149,14 @@ function validateEmpleado()
 
 		<tr>
  			<td>Password: </td> 
- 			<td><input type="text" name="password" ></td> 
+ 			<td><input type="password" name="password" ></td> 
  		<tr>
 
 		<tr>
  			<td>Confirmacion Password:</td> 
- 			<td> <input type="text" name="confirmacion_password" ></td> 
+ 			<td> <input type="password" name="confirmation_password" ></td> 
  		<tr>
+ 
 
 
 </table>

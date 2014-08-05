@@ -81,17 +81,27 @@ function validateEmpleado()
  
         <tr>
  			<td>Empresa: </td> 
- 			<td><input type="text" name="empresa_id" value=<%=@empleado.empresa_id%>></td> 
+ 			<td><select name="empresa_id">
+			    <option hidden="true" value='0'>Seleccione una empresa</option>
+			    <%@empresas.each do |empresa| %>
+	
+					<% if empresa.id == @empleado.empresa_id %>
+			    	<option value=<%= empresa.id %> selected> <%= empresa.nombre %> </option>
+			    	<% else %>
+			    	<option value=<%= empresa.id %> > <%= empresa.nombre %> </option>
+			    	<% end %>
+			    <% end %>
+			</select>
  		<tr>
 
 		<tr>
  			<td>Password: </td> 
- 			<td><input type="text" name="password" value=<%=@empleado.password%>></td> 
+ 			<td><input type="password" name="password" value=<%=@empleado.password%>></td> 
  		<tr>
 
 		<tr>
  			<td>Confirmacion Password:</td> 
- 			<td> <input type="text" name="confirmacion_password" value=<%=@empleado.password%>></td> 
+ 			<td> <input type="password" name="confirmacion_password" value=<%=@empleado.password%>></td> 
  		<tr>
 
 

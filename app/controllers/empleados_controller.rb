@@ -19,14 +19,16 @@ class EmpleadosController < ApplicationController
     @empleado.rfc = params[:rfc]
     @empleado.empresa_id = params[:empresa_id]
     @empleado.password = params[:password]
-    
-   # if  @empresa.save
-    @empleado.save!
-      redirect_to empleado_path, :notice => "El Empleado ha sido guardado"
-   # else
-   #   redirect_to empresas_show_path
-     ##   render "new"
-   # end
+ #   @empleado.password_confirmation = params[:confirmation_password]
+    if  @empleado.save
+   #  @empresa.save!
+       flash[:notice]  = "El Empleado ha sido guardado"
+        redirect_to controller: 'empresas', action: 'index'
+    else
+       flash[:notice]  = "Ese correo ya ha sido registrado"
+        redirect_to action: 'new'
+
+    end
   end
 
 
@@ -41,12 +43,20 @@ class EmpleadosController < ApplicationController
 
     @empleado.correo_electronico = params[:correo_electronico]
   #  @empleado.rfc = params[:rfc]
-    @empresa.empresa_id = params[:empresa_id]
-    @empresa.password = params[:password]
+    @empleado.empresa_id = params[:empresa_id]
+    @empleado.password = params[:password]
     
-    @empresa.save!
-    redirect_to empleados_path, :notice => "El Empleado ha sido actualizada"
-
+    if  @empleado.save
+   #  @empresa.save!
+       flash[:notice]  = "El Empleado ha sido guardado"
+        redirect_to controller: 'empresas', action: 'index'
+    else
+       flash[:notice]  = "Ese correo ya ha sido registrado"
+       redirect_to action: 'edit'
+      #redirect_to empresas_new_path, :notice => "Hubo un error al guardar en base de datos"
+      #render "new"
+    end
+    
   end
 
   def destroy
